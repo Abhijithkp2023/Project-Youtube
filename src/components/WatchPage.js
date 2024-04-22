@@ -15,6 +15,7 @@ const WatchPage = () => {
   return (
     <div>
       <iframe
+      className="mx-3"
         width="1000"
         height="500"
         src={"https://www.youtube.com/embed/" + searchParams.get("v") + "?si=jGa8mwU9cu87tIwO"}
