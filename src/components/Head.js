@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector  } from "react-redux";
-import { toggleMenu } from "../utils/appSlice";
+import { addToResults, toggleMenu } from "../utils/appSlice";
 import { YOUTUBE_SEARCH_API } from "../utils/constants";
 import { cacheResults } from "../utils/searchSlice";
 import {GOOGLE_API_KEY} from "../utils/constants"
@@ -46,7 +46,7 @@ const Head = () => {
     setSearchQuery(suggestion)
     const data = await fetch("https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=" + suggestion + "&type=video&key=" + GOOGLE_API_KEY);
     const json  = await data.json();
-    console.log(json.items);
+;    dispatch(addToResults(json.items))
   }
 
 
