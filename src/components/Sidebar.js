@@ -8,7 +8,7 @@ const Sidebar = () => {
   if(!isMenuOpen) return null;
   
   return (
-    <div className='p-5'>
+    <div className='px-5 h-screen'>
       <ul>
         <Link to="/"><li>Home</li></Link>
         <li>Shorts</li>

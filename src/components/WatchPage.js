@@ -32,7 +32,7 @@ const WatchPage = () => {
               allowFullScreen
             ></iframe>
           </div>
-          <div className="w-screen p-2">
+          <div className="w-full p-2">
             <LiveChat />
           </div>
         </div>

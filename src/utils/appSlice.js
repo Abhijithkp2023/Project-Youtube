@@ -15,7 +15,7 @@ const appSlice = createSlice ({
         }),
         addToResults: (state ,action) => {
             state.searchResults.push(action.payload);
-        }
+        },
 
     }
 });

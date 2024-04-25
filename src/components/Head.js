@@ -7,9 +7,6 @@ import {GOOGLE_API_KEY} from "../utils/constants"
 import { Link } from "react-router-dom";
 
 
-
-
-
 const Head = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
@@ -54,7 +51,7 @@ const Head = () => {
     dispatch(toggleMenu());
   };
   return (
-    <div className="grid grid-flow-col p-4 m-2 shadow-lg">
+    <div className="grid grid-flow-col p-4 m-3 ">
       <div className="flex col-span-1">
         <img
           onClick={() => toggleMenuHandler()}
@@ -84,7 +81,7 @@ const Head = () => {
           </button>
         </div>
         {showSuggestions && (
-          <div className="absolute bg-white px-5 py-2 w-[30rem] shadow-lg rounded-lg border border-gray-100">
+          <div className="absolute bg-white px-5 py-2 w-[30rem] rounded-lg border border-gray-100">
             <ul>
             <Link to="/results">
               {suggestions.map((suggestion, index) => (
