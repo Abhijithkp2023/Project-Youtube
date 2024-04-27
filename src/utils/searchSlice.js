@@ -6,10 +6,10 @@ const searchSlice = createSlice({
     reducers: {
         cacheResults: (state,action) => {
             state.push(action.payload)
-        }
+        },
     }
 })
 
-export const {cacheResults} = searchSlice.actions;
+export const {cacheResults , removeSearch} = searchSlice.actions;
 
 export default searchSlice.reducer;

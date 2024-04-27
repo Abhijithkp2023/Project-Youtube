@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector  } from "react-redux";
-import { addToResults, toggleMenu } from "../utils/appSlice";
+import { addToResults, removeResults, toggleMenu } from "../utils/appSlice";
 import { YOUTUBE_SEARCH_API } from "../utils/constants";
-import { cacheResults } from "../utils/searchSlice";
+import { cacheResults} from "../utils/searchSlice";
 import {GOOGLE_API_KEY} from "../utils/constants"
 import { Link } from "react-router-dom";
 
@@ -40,9 +40,12 @@ const Head = () => {
   };
 
   const handleSearch = async (suggestion) => {
+    console.log("handlsearch clicked")
+    dispatch(removeResults())
     setSearchQuery(suggestion)
     const data = await fetch("https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=" + suggestion + "&type=video&key=" + GOOGLE_API_KEY);
     const json  = await data.json();
+    console.log(json.items)
 ;    dispatch(addToResults(json.items))
   }
 
@@ -67,6 +70,7 @@ const Head = () => {
       </div>
       <div className="col-span-10 px-10">
         <div>
+          <form>
           <input
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
@@ -76,9 +80,10 @@ const Head = () => {
             onFocus={() => setShowSuggestions(true)}
             onBlur={() => setTimeout(() => setShowSuggestions(false),1000) }
           />
-          <button type="submit" className=" border border-gray-900 py-2 px-5 bg-gray-200 rounded-r-full">
+          <Link to="/results"><button type="submit" onClick={() => handleSearch(searchQuery)} className=" border border-gray-900 py-2 px-5 bg-gray-200 rounded-r-full">
             🔍
-          </button>
+          </button></Link>
+          </form>
         </div>
         {showSuggestions && (
           <div className="absolute bg-white px-5 py-2 w-[30rem] rounded-lg border border-gray-100">

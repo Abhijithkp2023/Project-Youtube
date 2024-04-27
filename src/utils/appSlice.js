@@ -16,8 +16,11 @@ const appSlice = createSlice ({
         addToResults: (state ,action) => {
             state.searchResults.push(action.payload);
         },
+        removeResults: (state ,action) => {
+            state.searchResults.length = 0;
+        }
 
     }
 });
-export const { toggleMenu , closeMenu , addToResults } = appSlice.actions;
+export const { toggleMenu , closeMenu , addToResults , removeResults } = appSlice.actions;
 export default appSlice.reducer;
